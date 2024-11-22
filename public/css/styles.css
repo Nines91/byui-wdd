@@ -15,6 +15,7 @@
   --secondary-font: "Overlock", serif;;
   --background-nav: #3B6064;
   --primary-font-color: #074474;
+  --nav-hover-bg: #4A9EDF;
   }
 
 
@@ -63,29 +64,43 @@ body {
 
 nav {
   width: 95%;
-  max-height: 40px;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align:right;
+  align-content: center;
   font-family: var(--secondary-font);
   background-color: var(--background-nav);
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
-#nav {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  margin: 0;
-  list-style: none;
-  text-align: center;
-  font-weight: bold;
+nav a {
   color: white;
+  list-style: none;
+  text-decoration: none;
+  font-weight: bold; 
+  text-align: center;
 }
 
-h1 {
+nav a:hover {
+  background-color: var(--nav-hover-bg);
+  padding: 8px;
+  border-radius: 6px;
+  border: 2px var(--primary-font-color) solid ;
+}
+
+nav li {
+  width: 15%;
+  list-style: none;
+  display:inline-flex;
+  text-align: right;
+}
+
+#home-h1 {
   font-family: var(--primary-font);
   margin-left: 25px;
   padding-top: 10px;
+  text-align: left;
 }
 
 #home-img {
@@ -197,4 +212,54 @@ footer {
   margin-left: 25px;
   font-weight: bold;
   padding: 15px;
+}
+
+/*Grid classification layout*/
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0 1rem;
+  margin: 0;
+}
+
+#inv-display li {
+  background: var(--background-nav);
+  border: 2px var(--nav-hover-bg) solid;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-family: var(--secondary-font);
+}
+
+#inv-display a {
+  color: white;
+  font-family:  var(--secondary-font);
+  font-size: 1.5rem;
+}
+
+h1 {
+  font-family: var(--primary-font);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 3rem;
+}
+
+/*Error massage layout*/
+.error-message {
+  width: 95%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-image: url(/images/site/crash.png);
+  background-size: 90%;
+  background-repeat: no-repeat;
+ background-position-y: center;
+ background-position-x: center;
+ font-family: var(--secondary-font);
+ font-size: 30px;
 }
