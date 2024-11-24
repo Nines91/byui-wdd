@@ -84,9 +84,9 @@ nav a {
 
 nav a:hover {
   background-color: var(--nav-hover-bg);
-  padding: 8px;
+  padding: 5px;
   border-radius: 6px;
-  border: 2px var(--primary-font-color) solid ;
+  border: 1px var(--primary-font-color) solid ;
 }
 
 nav li {
@@ -207,24 +207,49 @@ a.capacitor, a.flame, a.bumper, a.hub {
   align-content: center;
 }
 
+/*Footer layout*/
 footer {
   font-family: var(--secondary-font);
-  margin-left: 25px;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 1px var(--primary-font-color) solid;
+  background-color: #61baff25;
+  margin-top: 15px;
 }
+
+footer a, p {
+  text-align: center;
+  margin: 5px 0px 5px 0px;
+}
+
+footer a:hover {
+  background-color: var(--nav-hover-bg);
+  border-radius: 3px;
+  color: black;
+}
+
+#error-link {
+  text-align: right;
+}
+
+
 
 /*Grid classification layout*/
 #inv-display {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1.5fr));
   gap: 1rem;
   list-style: none;
   padding: 0 1rem;
-  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #inv-display li {
+  margin: 0;
   background: var(--background-nav);
   border: 2px var(--nav-hover-bg) solid;
   border-radius: 10px;
@@ -234,10 +259,24 @@ footer {
   font-family: var(--secondary-font);
 }
 
+#inv-display img {
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
 #inv-display a {
   color: white;
   font-family:  var(--secondary-font);
   font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.namePrice h2{
+  margin-top: 10px;
 }
 
 h1 {
@@ -247,19 +286,68 @@ h1 {
   text-align: center;
   font-size: 3rem;
 }
+/*Vehicle page by id layout*/
+#vehicle-card-details {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.vehicle-card-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.vehicle-card-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 5px;
+  border: 2px var(--primary-font-color) solid;
+}
+
+.vehicle-details-container {
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.vehicle-details-container p{
+text-align: left;
+justify-content: left;
+font-family: var(--secondary-font);
+line-height: 1.4rem;
+}
+
+.vehicle-details-container strong {
+  font-size: 1.2rem;
+}
+
+#price {
+  color: var(--primary-font-color);
+  font-size: 25px;
+  font-weight: 900;
+}
+
 
 /*Error massage layout*/
 .error-message {
   width: 95%;
-  height: 500px;
+  height:400px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-image: url(/images/site/crash.png);
-  background-size: 90%;
+  background-image: url(/images/site/crashs.png);
+  background-size:contain;
   background-repeat: no-repeat;
- background-position-y: center;
- background-position-x: center;
- font-family: var(--secondary-font);
- font-size: 30px;
+  background-position-y: center;
+  background-position-x: center;
+  font-family: var(--secondary-font);
+  font-size: 30px;
+}
+
+.error-message h1 {
+  font-family: var(--primary-font);
 }

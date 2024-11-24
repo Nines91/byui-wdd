@@ -58,6 +58,48 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the vehicle page view HTML
+ for vehicle cards
+* ************************************ */
+
+Util.buildVehicleCardPage = async function (data) {
+  let vehicleCard = "";
+
+  if (data) {
+    //Vehicle section
+    vehicleCard += '<section id="vehicle-card-details">';
+
+    //Container vehicle
+    vehicleCard += '<div class="vehicle-card-container">';
+
+    //Vehicle Image
+    vehicleCard += '<div class="vehicle-card-image">';
+    vehicleCard += `<img src="${data.inv_image}" alt="${data.inv_make} ${data.inv_model}">`;
+    vehicleCard += '</div>';
+
+    //Vehicle Details
+    vehicleCard += '<div class="vehicle-details-container">';
+    vehicleCard += `<h2>${data.inv_make} ${data.inv_model}</h2>`;
+    vehicleCard += '<p>';
+    vehicleCard += `<strong>Year:</strong> ${data.inv_year}<br>`;
+    vehicleCard += `<strong>Color:</strong> ${data.inv_color}<br>`;
+    vehicleCard += `<strong>Miles:</strong> ${new Intl.NumberFormat('en-US').format(data.inv_miles)} miles<br>`;
+    vehicleCard += '</p>';
+    vehicleCard += `<p>${data.inv_description}</p>`;
+    vehicleCard += `<p id="price">Price: ${new Intl.NumberFormat('en-US').format(data.inv_price)}</p>`;
+    vehicleCard += '</div>';
+    vehicleCard += '</div>';
+    vehicleCard += '</section>';
+
+    }else {
+      vehicleCard = '<p class="notice">Sorry, the vehicle you are looking for could not be found.</p>';
+  }
+
+  return vehicleCard;
+}
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
