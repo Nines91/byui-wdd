@@ -50,8 +50,8 @@ body {
   grid-column: 1/2;
   font-family:var(--primary-font) ;
   font-size: 50px;
-  margin-left:auto;
-  text-align: right;
+  /*margin-left:auto;*/
+  text-align: left;
 }
 
 #tools {
