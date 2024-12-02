@@ -1,9 +1,13 @@
+<!-- **** MANAGEMENT **** -->
+<main class="main-forms">
+<!-- Content Heading -->
 <% if (title) { %>
     <h1><%= title %></h1>
     <% } else {
       res.redirect('/')
     } %>
 
+<!-- Message Block -->
 <%- messages() %>
 
 <% if (errors) { %>
@@ -14,4 +18,14 @@
    </ul>
   <% } %>
 
-  
+ <!-- Add new calssification and new inventory links -->
+   <fieldset>
+    <legend>Add new elements</legend>
+      <div class="managementContent">
+        <div class="managementLinks">
+          <a title="Add new classification" href="/inv/add-classification">add new classification</a><br>
+          <a title="Add new inventory" href="/inv/add-inventory">add new inventory</a>
+        </div>
+      </div>
+  </fieldset>
+</main>

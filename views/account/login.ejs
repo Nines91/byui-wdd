@@ -1,4 +1,4 @@
-<main id="login-main">
+<main class="main-forms">
   
 <% if (title) { %>
   <h1><%= title %></h1>
@@ -19,7 +19,7 @@
 <!-- Login form -->
 <fieldset>
   <legend>Log in if you have an account</legend>
-    <form id="loginForm" action="/account/login" method="POST">
+    <form class="forms" action="/account/login" method="POST">
       <label for="email">Email Address:</label>
       <input type="email" id="email" name="account_email" placeholder="example@example" required>
       
@@ -30,7 +30,7 @@
     </form>
 </fieldset>
 <!-- Registration link -->
-<p id="registrationLink">
+<p class="links">
   No account? 
   <a title="Click to resgister" href="/account/register">Sign up</a>.
 </p>

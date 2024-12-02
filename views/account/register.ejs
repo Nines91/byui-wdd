@@ -1,4 +1,4 @@
-<main id="register-main">
+<main class="main-forms">
 <% if (title) { %>
     <h1><%= title %></h1>
     <% } else {
@@ -18,7 +18,7 @@
 <!-- Login form -->
 <fieldset>
     <legend>Create an account</legend>
-        <form id="registerForm" action="/account/register" method="post">
+        <form class="forms" action="/account/register" method="post">
             <label for="firstname">First Name</label>
             <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
 
@@ -30,7 +30,7 @@
             
             <label for="password">Password:</label>
             <input type="password" id="password" name="account_password" placeholder="Enter your password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
-            <span id="passwordButton">Show Password</span>
+            <span id="showPassButton">Show Password</span>
             <div id="pwd-required">(Must be 12 characters minimum, with at least 1 capital letter, lower case letter, number, and special character)</div>
             
             <button type="submit">Register</button>

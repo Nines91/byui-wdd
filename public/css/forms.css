@@ -4,14 +4,16 @@
 }
 
 /*------------ Normal view ------------*/
-#login-main, #register-main {
+.main-forms {
   width: 95%;
+  height: max-content;
   margin-left: auto;
   margin-right: auto;
   background-image: url(../images/site/auto-form1.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 25px;
 }
 
 fieldset {
@@ -35,15 +37,9 @@ fieldset legend {
   padding: 0 .5rem;
 }
 
-#loginForm {
-  max-width: 60%;
-}
 
-#registerForm {
-  max-width: 80%;
-}
-
-#loginForm, #registerForm {
+.forms {
+  max-width: 75%;
   margin: 2rem auto;
   padding: 2rem;
   border: 1px var(--primary-font-color) solid;
@@ -51,8 +47,7 @@ fieldset legend {
   border-radius: 10px;
   background: transparent;
 }
-
-#loginForm label, #registerForm label {
+.forms label {
   display: block;
   margin-bottom: 0.2rem;
   font-family: var(--primary-font);
@@ -60,7 +55,7 @@ fieldset legend {
   
 }
 
-#loginForm input, #registerForm input {
+.forms input {
   width: 100%;
   display: block;
   font-family: var(--secondary-font);
@@ -73,16 +68,22 @@ fieldset legend {
   background: rgba(255, 255, 255, 0.3);
 }
 
-#loginForm input:required, #registerForm input:required {
+.forms input:required {
   border-left: 6px solid red;
+  border-right: 1px solid red;
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
 }
 
-#loginForm input:required:valid, #registerForm input:required:valid {
+.forms input:required:valid {
   border-left: 6px solid green;
+  border-right: 1px solid green;
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
 }
 
-#loginForm button, #registerForm button, #passwordButton  {
-  width: 40%;
+.forms button, #showPassButton  {
+  width: 250px;
   padding: 0.30rem;
   font-family: var(--primary-font);
   font-size: 1.3rem;
@@ -94,11 +95,11 @@ fieldset legend {
   border-radius: 15px;
 }
 
-#loginForm button:hover, #registerForm button:hover, #passwordButton:hover {
+.forms button:hover, #showPassButton:hover {
   background-color: var(--primary-font-color);
 }
 
-#registrationLink, #registrationLink a {
+.links, .managementLinks, .links a {
   font-family: var(--primary-font);
   color: white;
   font-size: 1.5rem;
@@ -109,9 +110,25 @@ fieldset legend {
   background: transparent;
 }
 
-#registrationLink a:hover {
+.links a:hover, .managementLinks {
   text-decoration: underline;
   color: black;
+}
+
+.managementContent {
+  height: 300px;
+  text-align: center;
+  align-content: center;
+}
+
+.managementLinks {
+  display:block;
+  height: 150px;
+  text-align: left;
+  align-content: center;
+  padding-left: 20px;
+  border: 1px var(--primary-font-color) solid;
+  border-radius: 10px;
 }
 
 #pwd-required {
@@ -121,11 +138,17 @@ fieldset legend {
   text-align: center;
   color: white;
 }
+
+.classification-paragraph {
+  font-size: 25px;
+  padding-bottom: 10px;
+}
 .notice {
   font-family: var(--primary-font);
   font-size: 1.5rem;
-  color: red;
+  color: var(--primary-font-color);
   text-align: center;
+  list-style: none;
 }
 /*------------Mobile view  */
 @media only screen and (max-width: 800px) {
@@ -133,23 +156,31 @@ fieldset legend {
     font-size: 18px;
   }
 
-  #loginForm, #registerForm {
+  .forms {
     max-width: 100%;
   }
   
-  #loginForm label, #registerForm label {
+  .formslabel {
     font-size: 12px;
   }
   
-  #loginForm input, #registerForm input {
+  .forms input {
     width: 100%;
     display: block;
     font-family: var(--secondary-font);
     font-size: 12px;
   }
 
-  #loginForm button, #registerForm button, #passwordButton {
+  .forms button, #showPassButton {
+    width: 150px;
+    font-size: medium;
+  }
+  .forms, #showPassButton {
     font-size: 1rem;
+  }
+
+  .classification-paragraph {
+    font-size: 20px;
   }
 
   #pwd-required {

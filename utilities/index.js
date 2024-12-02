@@ -94,10 +94,23 @@ Util.buildVehicleCardPage = async function (data) {
     }else {
       vehicleCard = '<p class="notice">Sorry, the vehicle you are looking for could not be found.</p>';
   }
-
   return vehicleCard;
 }
 
+Util.buildClassificationDropdown = async function (req, res, next) {
+  let data = await invModel.getClassifications()
+ 
+  let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" required >
+  <option value="" disabled selected>Select a classification</option>`
+
+  data.rows.forEach((row) => {
+      option += `<option value="${row.classification_id}">${row.classification_name}</option>`
+  })
+
+  option += `</select>`
+
+  return option
+}
 
 /* ****************************************
  * Middleware For Handling Errors
