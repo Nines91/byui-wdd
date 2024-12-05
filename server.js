@@ -18,6 +18,7 @@ const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 
 /* ***********************
@@ -45,13 +46,18 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
+//Login activity
+app.use(cookieParser())
+//Login process activity
+app.use(utilities.checkJWTToken)
+
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
-app.use(static)
+
 
 /* ***********************
  * Routes
@@ -70,6 +76,10 @@ app.use("/error", errorRoute);
 //Account routes
 app.use("/account", accountRoute);
 
+// test
+app.get("/account/test", (req, res) => {
+  res.send("Account test route is working");
+});
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})

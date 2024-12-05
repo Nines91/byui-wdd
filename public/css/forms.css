@@ -83,20 +83,20 @@ fieldset legend {
 }
 
 .forms button, #showPassButton  {
-  width: 250px;
+  width: 220px;
   padding: 0.30rem;
   font-family: var(--primary-font);
   font-size: 1.3rem;
   text-align: center;
   align-self: center;
   color: white;
-  background-color: var(--background-nav);
+  background-color: var(--formBtn-color);
   border: none;
   border-radius: 15px;
 }
 
 .forms button:hover, #showPassButton:hover {
-  background-color: var(--primary-font-color);
+  background-color: var(--background-nav);
 }
 
 .links, .managementLinks, .links a {

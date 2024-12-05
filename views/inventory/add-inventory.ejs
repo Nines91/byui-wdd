@@ -3,119 +3,124 @@
 <!-- Content Heading -->
 <% if (title) { %>
     <h1><%= title %></h1>
-    <% } else { res.redirect('/') } %>
-    
-    <!-- Message Block -->
-    <%- messages() %> <% if (errors) { %>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<!-- Message Block -->
+<%- messages() %>
+
+<% if (errors) { %>
     <ul class="notice">
-        <% errors.array().forEach(error => { %>
-        <li><%= error.msg %></li>
-        <% }) %>
-    </ul>
-    <% } %>
+   <% errors.forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %> 
+  <fieldset>
+    <legend>Add a new</legend>
+        <form class="forms" action="/inv/add-inventory" method="POST">
+            <label for="classification">Classification</label>
+            <%- dropdown %>
 
-    <form class="forms" action="/inv/add-inventory" method="post">
-        <label for="classification">Classification</label>
-        <%- dropdown %>
+            <label for="inv_year">Year</label>
+            <input 
+                type="text" 
+                name="inv_year" 
+                id="inv_year"
+                pattern="[0-9]{4}$"
+                maxlength="4"
+                placeholder="1900"
+                title="Pleace enter a valid 4 digit year"
+                value="<%= locals.inv_year %>"
+                required
+            />
 
-        <label for="inv_year">Year</label>
-        <input 
-            type="text" 
-            name="inv_year" 
-            id="inv_year"
-            pattern="[0-9]{4}$"
-            maxlength="4"
-            placeholder="1900"
-            title="Pleace enter a valid 4 digit year"
-            value="<%= locals.inv_year %>"
-            required
-        />
+            <label for="inv_make">Make</label>
+            <input 
+                type="text"
+                name="inv_make"
+                id="inv_make"
+                minlength="3"
+                placeholder="Min of 3 characters"
+                title="Pleace enter a Make"
+                value="<%= locals.inv_make %>"
+                required
+            />
 
-        <label for="inv_make">Make</label>
-        <input 
-            type="text"
-            name="inv_make"
-            id="inv_make"
-            minlength="3"
-            placeholder="Min of 3 characters"
-            title="Pleace enter a Make"
-            value="<% = locals.inv_make %>"
-            required
-        />
+            <label for="inv_model">Model</label>
+            <input 
+                type="text"
+                name="model"
+                id="model"
+                minlength="3"
+                placeholder="Min of 3 characters"
+                title="Pleace enter a Model"
+                value="<%= locals.model %>"
+                required
+            />
 
-        <label for="inv_model">Model</label>
-        <input 
-            type="text"
-            name="model"
-            id="model"
-            minlength="3"
-            placeholder="Min of 3 characters"
-            title="Pleace enter a Model"
-            value="<% = locals.model %>"
-            required
-        />
+            <label for="inv_color">Color</label>
+            <input 
+                type="text"
+                name="inv_color"
+                id="inv_color"
+                title="Pleace enter a Color"
+                value="<%=locals.inv_color %>"
+                required
+            />
 
-        <label for="inv_color">Color</label>
-        <input 
-            type="text"
-            name="inv_color"
-            id="inv_color"
-            title="Pleace enter a Color"
-            value="<% =locals.inv_color %>"
-            required
-        />
+            <label for="inv_miles">Milage</label>
+            <input
+                type="text"
+                id="inv_miles"
+                name="inv_miles"
+                pattern="[0-9]*"
+                placeholder="Enter mileage numbers only"
+                title="Please enter a valid mileage - numbers only."
+                value="<%= locals.inv_miles %>"
+                required
+            />
 
-        <label for="inv_miles">Milage</label>
-        <input
-            type="text"
-            id="inv_miles"
-            name="inv_miles"
-            pattern="[0-9]*"
-            placeholder="Enter mileage numbers only"
-            title="Please enter a valid mileage - numbers only."
-            value="<%= locals.inv_miles %>"
-             required
-        />
+            <label for="inv_price">Price</label>
+            <input
+                type="text"
+                id="inv_price"
+                name="inv_price"
+                pattern="[0-9]*"
+                placeholder="Enter price numbers only"
+                title="Please enter a valid price numbers only."
+                value="<%= locals.inv_price %>"
+                required
+            />
 
-        <label for="inv_price">Price</label>
-        <input
-            type="text"
-            id="inv_price"
-            name="inv_price"
-            pattern="[0-9]*"
-            placeholder="Enter price numbers only"
-            title="Please enter a valid price numbers only."
-            value="<%= locals.inv_price %>"
-            required
-        />
+            <label for="inv_description">Description</label>
+            <textarea
+                id="inv_description"
+                name="inv_description"
+                style="width: 400px; height: 150px"
+                placeholder="Add description here...."
+                title="Please enter a description."
+                required><%= locals.inv_description %>
+            </textarea>
 
-        <label for="inv_description">Description</label>
-        <textarea
-            id="inv_description"
-            name="inv_description"
-            style="width: 400px; height: 150px"
-            placeholder="Add description here...."
-            title="Please enter a description."
-            value="<%= locals.inv_description %>"
-            required
-        ></textarea>
+            <label for="inv_image">Add Image</label>
+            <input 
+                type="text" 
+                name="inv_image" 
+                id="inv_image"
+                value="/images/vehicles/no-image.png"
+            />
 
-        <label for="inv_image">Add Image</label>
-        <input 
-            type="text" 
-            name="inv_image" 
-            id="inv_image"
-            value="/images/vehicles/no-image.png"
-        />
+            <label for="inv_thumbnail">Add Thubnail Image</label>
+            <input 
+                type="text" 
+                name="inv_thumbnail" 
+                id="inv_thumbnail"
+                value="/images/vehicles/no-image-tn.png"
+            />
 
-        <label for="inv_thumbnail">Add Thubnail Image</label>
-        <input 
-            type="text" 
-            name="inv_thumbnail" 
-            id="inv_thumbnail"
-            value="/images/vehicles/no-image-tn.png"
-        />
-
-        <button type="submit">Add Inventory</button>
-    </form>
+            <button type="submit">Add Inventory</button>
+        </form>
+    </fieldset>
 </main>

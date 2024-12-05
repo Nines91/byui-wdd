@@ -72,35 +72,31 @@ async function checkExistingClassification(classification_nameparams) {
 /* ***************************
  *  Adding a new Inventory to the database
  * ************************** */
-async function addInventory(
-  inv_make,
-  inv_model,
-  inv_year,
-  inv_price,
-  inv_miles,
-  inv_color,
-  inv_description,
-  inv_image,
-  inv_thumbnail,
-  classification_id
-) {
+async function addInventory(data) {
   try {
-      const sql = 'INSERT INTO inventory (inv_make, inv_model, inv_year, inv_price, inv_miles, inv_color, inv_description, inv_image, inv_thumbnail, classification_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *'
-      return await pool.query(sql, [
-          inv_make,
-          inv_model,
-          inv_year,
-          inv_price,
-          inv_miles,
-          inv_color,
-          inv_description,
-          inv_image,
-          inv_thumbnail,
-          classification_id,
-      ])
+    const result = await pool.query(
+      `INSERT INTO public.inventory 
+      (classification_id, inv_make, inv_model, inv_year, inv_description, inv_thumbnail, inv_image, inv_price, inv_miles, inv_color) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      RETURNING *`,
+      [
+        data.classification_id,
+        data.inv_make,
+        data.inv_model,
+        data.inv_year,
+        data.inv_description,
+        data.inv_thumbnail,
+        data.inv_image,
+        data.inv_price,
+        data.inv_miles,
+        data.inv_color,
+      ]
+    );
+
+    return { success: true, data: result.rows[0] };
   } catch (error) {
-      console.error('Database Error:', error.message) // Log the error
-      return error.message
+    console.error("Error in addInventory:", error);
+    return { success: false };
   }
 }
 

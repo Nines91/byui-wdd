@@ -15,7 +15,7 @@
    </ul>
   <% } %>
   
-<!-- Login form -->
+<!-- Registration form -->
 <fieldset>
     <legend>Create an account</legend>
         <form class="forms" action="/account/register" method="post">
@@ -37,8 +37,10 @@
 </form>
 </fieldset>
 
+</main>
+
 <script>
-    const passwordButton = document.querySelector("#passwordButton");
+    const passwordButton = document.querySelector("#showPassButton");
     passwordButton.addEventListener("click", function() {
         const passwordInput = document.querySelector("#password");
         const type = passwordInput.getAttribute("type");
@@ -51,5 +53,3 @@
         }
     })
 </script>
-
-</main>
