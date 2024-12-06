@@ -70,6 +70,41 @@ async function checkExistingClassification(classification_nameparams) {
 }
 
 /* ***************************
+ *  Add Classification if not already in system
+ * ************************** */
+async function addClass(classification_name) {
+  try {
+    console.log("Checking for existing classification:", classification_name);
+
+    const checkResult = await pool.query(
+      `SELECT classification_name FROM public.classification WHERE classification_name = $1`,
+      [classification_name]
+    );
+    console.log("Check result:", checkResult.rows);
+
+    if (checkResult.rows.length > 0) {
+      console.log("Classification already exists:", classification_name);
+      return { message: "Classification name already exists", success: false };
+    }
+
+    console.log("Inserting new classification:", classification_name);
+
+    const result = await pool.query(
+      `INSERT INTO public.classification (classification_name) 
+       VALUES ($1) 
+       RETURNING *`,
+      [classification_name]
+    );
+
+    console.log("Insert result:", result.rows);
+    return { data: result.rows[0], success: true };
+  } catch (error) {
+    console.error("Error in addClass:", error);
+    throw error;
+  }
+}
+
+/* ***************************
  *  Adding a new Inventory to the database
  * ************************** */
 async function addInventory(data) {
@@ -107,5 +142,6 @@ module.exports = {
   getDetailByVehicleId,
   addClassification,
   checkExistingClassification,
+  addClass,
   addInventory
 };

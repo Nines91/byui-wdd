@@ -64,12 +64,17 @@ body {
 }
 
 nav {
+  
+}
+nav ul{
   width: 95%;
   height: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align:right;
-  align-content: center;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  justify-content: space-around;
   font-family: var(--secondary-font);
   background-color: var(--background-nav);
   font-size: 1.5rem;
@@ -80,7 +85,8 @@ nav a {
   list-style: none;
   text-decoration: none;
   font-weight: bold; 
-  text-align: center;
+  text-align:center;
+  justify-content: space-between;
 }
 
 nav a:hover {
@@ -90,11 +96,10 @@ nav a:hover {
   border: 1px var(--primary-font-color) solid ;
 }
 
-nav li {
-  width: 15%;
-  list-style: none;
-  display:inline-flex;
-  text-align: right;
+nav ul li {
+  margin: 5px 0;
+  font-size: 1.5rem;
+  padding: 5px 10px;
 }
 
 #home-h1 {
